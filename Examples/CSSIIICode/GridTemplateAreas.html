@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Flex Display Property</title>
+    <meta charset="UTF-8"> <!-- Can be in uppercase -->
+
+    <style>
+        body {
+            font-size: 1.5em;
+            /* Using rem */
+        }
+
+        /* main is the container */
+        main {
+            display: grid;
+            /* Change to block */
+            grid-template-areas:
+                "header header"
+                /* spans across two cells */
+                "nav content"
+                "footer footer";
+
+            /* one-third and two-thirds */
+            grid-template-columns: 1fr 2fr;
+        }
+
+        header {
+            background-color: red;
+            grid-area: header;
+            text-align: center;
+        }
+
+        nav {
+            background-color: green;
+            grid-area: nav;
+        }
+
+        div {
+            background-color: yellow;
+            grid-area: content;
+        }
+
+        footer {
+            background-color: orange;
+            grid-area: footer;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>The Local News</header>
+        <nav>
+            <a href="http://www.cnn.com/">CNN</a>
+            <a href="https://today.umd.edu/">UMD Today</a>
+        </nav>
+        <div>
+            HERE IS THE PAGE CONTENT
+        </div>
+        <footer>Fear the turtle</footer>
+    </main>
+
+</body>
+
+</html>
