@@ -1,6 +1,10 @@
+:root {
+    --main-color: white;
+    --font-size: 15px;
+}
+
 html {
-    font-size: 15px;
-    background-image: "UMDGlobe.gif";
+    font-size: var(--font-size);
 }
 
 body {
@@ -8,12 +12,17 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
-    color: white;
+    color: var(--main-color);
 }
 
 h1 {
     text-align: center;
     font-size: 3em;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5em;
 }
 
 div {
@@ -51,7 +60,6 @@ li a:hover {
 
 .oswald-font {
   font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
@@ -61,9 +69,17 @@ table, td, th{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    border: 0.25rem solid black;
+    border: 0.25rem solid grey;
 }
 
-tbody > tr:nth-child(odd) {
-  background-color: green;
+tbody > tr:nth-child(2n - 1) {
+    background-color: rgb(1, 48, 1);
+}
+
+iframe {
+    width: 100rem;
+    height: 56.40rem;
+    display:block;
+    margin: 0 auto;
+    background-color: #777;
 }
