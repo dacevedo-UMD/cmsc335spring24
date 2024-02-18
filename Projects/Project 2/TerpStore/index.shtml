@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terp Store.</title>
+    <link rel="styleSheet" href="style.css" type="text/css">
+</head>
+<body>
+    <h1><u>Terp Store</u></h1><br>
+
+    <div class="paragraph-container">
+        <p>
+            <a href="catalogInquiry.shtml">Catalog Inquiry</a><br>
+            <a href="placingOrder.shtml">Placing Order</a>
+        </p>
+    </div>
+
+    <!--#include virtual="footer.shtml" -->
+</body>
+</html>
