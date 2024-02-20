@@ -1,39 +1,48 @@
 html {
     font-size: 14px;
-    border: 0.5rem solid green;
-    margin: 0.5rem;
-    padding: 0rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 body {
+    margin: 0.5rem;
+}
+
+#container {
+    /* background image properties */
     background-image: url(images/JimHenson.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+
+    /* flex properties */
+    display: flex; /* Change to block */
+    flex-direction: column; /* row is the default, try column. row-reverse */
+    align-items: center; /* try center, flex-start, flex-end */
+    justify-content: space-between; /* try space-between, space-evenly */
+    width:42rem; 
+    height:40rem;  
+    border: 1rem solid green;
 }
 
-h1 {
-    color: azure;
+#item1 {
     background-color: rgba(0, 0, 0, .4);
-    font-size: 5rem;
-    display: inline-block;
+    align-self: self-start;
+    color: azure;
+    font-size: 3rem;
+    margin: 1rem;
 }
 
-.paragraph-container {
-    background-color: white;  
+#item2 {
     background-color: rgba(211,211,211, 0.8);
+    width: 12rem;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: inline-block;
-}
-
-p {
-  font-size: 3rem;
-  color: white;
+    outline: 0.1rem solid black;
+    padding: 0rem;
+    margin-top: -5rem;
 }
 
 a {
     color: brown;
+    transition: font-size 0.5s;
 }
 
 a:visited {
@@ -41,16 +50,18 @@ a:visited {
 }
 
 a:hover {
-    font-size: 2.75rem;
+    font-size: 0.90rem;
 }
 
 footer {
-    border: 0.5rem solid green;
-    outline: 0.5rem solid white;
-    margin: 0rem;
+    border: 0.5rem solid rgb(184, 184, 184);
+    border-style: ridge;
+    outline: 0.5rem solid rgb(161, 207, 228);
+    margin: 0.5rem;
     background-color: red;
     color: white;
-    font-size: 3rem;
+    font-size: 1.1rem;
     text-align: center;
     padding: 1rem;
+    align-self: stretch;
 }

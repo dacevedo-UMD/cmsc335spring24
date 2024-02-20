@@ -7,15 +7,17 @@
     <link rel="styleSheet" href="style.css" type="text/css">
 </head>
 <body>
-    <h1><u>Terp Store</u></h1><br>
-
-    <div class="paragraph-container">
-        <p>
+    <div id="container">
+        <p id="item1">
+            <u><b>Terp Store</b></u>
+        </p>
+        
+        <p id="item2">
             <a href="catalogInquiry.shtml">Catalog Inquiry</a><br>
             <a href="placingOrder.shtml">Placing Order</a>
         </p>
+    
+        <!--#include virtual="footer.shtml" -->
     </div>
-
-    <!--#include virtual="footer.shtml" -->
 </body>
 </html>
