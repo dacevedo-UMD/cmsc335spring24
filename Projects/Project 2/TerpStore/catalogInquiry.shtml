@@ -13,8 +13,8 @@
         </p>
         
         <form action="http://npp.cs.umd.edu/cmsc335/projects/TerpStore/catalogInquiry.php" method="get" id="inquiry">
-            <label for="item-options"><u>Item Category</u></label> 
-            <input list="item-options" name="item-options" autofocus><br><br>
+            <label for="item-choice"><u>Item Category</u></label> 
+            <input list="item-options" id="item-choice" name="item-choice" autofocus><br><br>
             <datalist id="item-options">
                 <option value="clothes">
                 <option value="books">
@@ -32,8 +32,8 @@
             <input type="checkbox" id="availableOnline" name="availableOnline" checked>
             <label for="availableOnline"><u>Available Online</u></label><br>
             
-            <label for="info"><u>Additional Information</u></label><br>
-            <textarea id="info" name="info"></textarea><br>
+            <label for="info"><u>Additional Information</u></label>
+            <textarea id="info" name="info"></textarea>
 
             <label for="email"><u>Contact Email Address</u></label>
             <input type="email" id="email" name="email" placeholder="example@terpmail.umd.edu"><br><br>
