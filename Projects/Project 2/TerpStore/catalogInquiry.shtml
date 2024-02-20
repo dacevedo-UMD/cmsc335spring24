@@ -1,1 +1,47 @@
-<!-- You implement -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog Inquiry.</title>
+    <link rel="styleSheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div id="container">
+        <p id="title">
+            <u><b>Catalog Inquiry</b></u>
+        </p>
+        
+        <form action="http://npp.cs.umd.edu/cmsc335/projects/TerpStore/catalogInquiry.php" method="get" id="inquiry">
+            <label for="item-options"><u>Item Category</u></label> 
+            <input list="item-options" name="item-options" autofocus><br><br>
+            <datalist id="item-options">
+                <option value="clothes">
+                <option value="books">
+                <option value="music">
+                <option value="food">
+                <option value="other">
+            </datalist>
+
+            <label for="maximumCost"><u>Maximum Cost ($)</u></label> 
+            <input type="number" id="maximumCost" name="maximumCost" min="1" max="1000" step="5" value="1"><br><br>
+
+            <input type="checkbox" id="availableOnCampus" name="availableOnCampus">
+            <label for="availableOnCampus"><u>Available on Campus</u></label><br><br>
+            
+            <input type="checkbox" id="availableOnline" name="availableOnline" checked>
+            <label for="availableOnline"><u>Available Online</u></label><br>
+            
+            <label for="info"><u>Additional Information</u></label><br>
+            <textarea id="info" name="info"></textarea><br>
+
+            <label for="email"><u>Contact Email Address</u></label>
+            <input type="email" id="email" name="email" placeholder="example@terpmail.umd.edu"><br><br>
+
+            <input type="submit" value="Submit Inquiry" id="button"> <input type="reset" value="Clear" id="button-right">
+        </form>
+    
+        <!--#include virtual="footer.shtml" -->
+    </div>
+</body>
+</html>

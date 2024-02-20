@@ -8,11 +8,11 @@
 </head>
 <body>
     <div id="container">
-        <p id="item1">
+        <p id="title">
             <u><b>Terp Store</b></u>
         </p>
         
-        <p id="item2">
+        <p id="navigation">
             <a href="catalogInquiry.shtml">Catalog Inquiry</a><br>
             <a href="placingOrder.shtml">Placing Order</a>
         </p>
