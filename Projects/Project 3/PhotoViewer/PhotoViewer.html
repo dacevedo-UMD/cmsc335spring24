@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Viewer</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="code.js" defer></script>
+</head>
+<body onload="main()">
+    <div class="viewer-container">
+        <h1 id="main-header"><u>Photo Viewer</u></h1>
+        <div class="photo-container">
+            <img id="photo" src="InitialImage.jpg" alt="image"><br>
+        </div>
+        <form>
+            <fieldset>
+                <legend>
+                    <strong>Status</strong>
+                </legend>
+                <label>Photo Being Displayed: <input id="stretched-text-box" type="text" disabled></label>
+                <div id="photo-status">Photo Viewer System</div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>
+                    <strong>Loading Images (Local Folder)</strong>
+                </legend>
+                <label>Photos' Folder: <input type="text" id="photo-folder"></label> 
+                <label>Common Name: <input type="text" id="photo-name"></label><br>
+                <label>Start Photo Number: <input type="number" id="startNum"></label> 
+                <label>End Photo Number: <input type="number" id="endNum"></label>
+                <input type="button" class="button-styling" id="LPbutton" value="Load Photos">
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    <strong>Loading Images (JSON File)</strong>
+                </legend>
+              
+
+                <label>URL: <input id="stretched-text-box" type="url" placeholder="http://www.cs.umd.edu/~nelson/classes/resources/cmsc335/images/imagesSet1.json"></label>
+                <input type="button" class="button-styling" id="LJbutton" value="Load JSON">
+            </fieldset>
+            
+            <fieldset>
+                <legend>
+                    <strong>Iterating</strong>
+                </legend>
+                <input type="button" class="button-styling" id="PPbutton" value="Previous Photo">
+                <input type="button" class="button-styling" id="NPbutton" value="Next Photo">
+                <input type="button" class="button-styling" id="FPbutton" value="First Photo">
+                <input type="button" class="button-styling" id="LPbutton" value="Last Photo">
+            </fieldset>
+
+            <fieldset>
+                <legend>
+                    <strong>SlideShows</strong>
+                </legend>
+                <input type="button" class="button-styling" id="SSbutton" value="SlideShow">
+                <input type="button" class="button-styling" id="RSSbutton" value="RandomSlideShow">
+                <input type="button" class="button-styling" id="SSSbutton" value="StopSlideShow">
+            </fieldset>
+            <hr>
+            <input type="reset" class="button-styling" value="Reset Form Values">
+        </form>
+    </div>
+</body>
+</html>

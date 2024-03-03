@@ -1,0 +1,71 @@
+html {
+    font-size: 14px;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+body {
+    padding: 0rem;
+    margin: 0.5rem;
+}
+
+form {
+    width: 50rem;
+}
+
+fieldset {
+    padding: auto;
+    margin: 0rem;
+}
+
+fieldset {
+    margin: 0;
+    padding: auto;
+}
+
+label, p {
+    margin: 0;
+    padding: 0;
+}
+
+.button-styling {
+    box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.596);
+}
+
+.viewer-container {
+    padding: 1rem;
+    border: 1rem solid brown;
+    border-style: groove;
+    height: 750px;
+    width: 700px;
+    /* FLEX ATTRIBUTES */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photo-container {
+    border: 1rem solid black;
+    border-style: double;
+    height: 300px;
+    width: 450px;
+}
+
+#photo {
+    height: 300px;
+    width: 450px;
+}
+
+#stretched-text-box {
+    width: 37rem;
+}
+
+#main-header {
+    color:brown;
+    align-self: self-start;
+}
+
+#photo-status {
+    font-size: 1.1rem;
+    color: red;
+}
