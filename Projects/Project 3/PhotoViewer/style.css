@@ -51,13 +51,13 @@ label, p {
     width: 450px;
 }
 
+.stretched-text-box {
+    width: 37rem;
+}
+
 #photo {
     height: 300px;
     width: 450px;
-}
-
-#stretched-text-box {
-    width: 37rem;
 }
 
 #main-header {

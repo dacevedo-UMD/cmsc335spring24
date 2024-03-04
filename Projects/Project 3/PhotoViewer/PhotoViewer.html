@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
     <script src="code.js" defer></script>
 </head>
-<body onload="main()">
+<body>
     <div class="viewer-container">
         <h1 id="main-header"><u>Photo Viewer</u></h1>
         <div class="photo-container">
@@ -18,7 +18,7 @@
                 <legend>
                     <strong>Status</strong>
                 </legend>
-                <label>Photo Being Displayed: <input id="stretched-text-box" type="text" disabled></label>
+                <label>Photo Being Displayed: <input id="photoName" class="stretched-text-box" type="text" disabled></label>
                 <div id="photo-status">Photo Viewer System</div>
             </fieldset>
             
@@ -30,7 +30,7 @@
                 <label>Common Name: <input type="text" id="photo-name"></label><br>
                 <label>Start Photo Number: <input type="number" id="startNum"></label> 
                 <label>End Photo Number: <input type="number" id="endNum"></label>
-                <input type="button" class="button-styling" id="LPbutton" value="Load Photos">
+                <input type="button" class="button-styling" id="LoPbutton" value="Load Photos">
             </fieldset>
 
             <fieldset>
@@ -39,7 +39,7 @@
                 </legend>
               
 
-                <label>URL: <input id="stretched-text-box" type="url" placeholder="http://www.cs.umd.edu/~nelson/classes/resources/cmsc335/images/imagesSet1.json"></label>
+                <label>URL: <input id="photoURL" class="stretched-text-box" type="url" value="http://www.cs.umd.edu/~nelson/classes/resources/cmsc335/images/imagesSet1.json"></label>
                 <input type="button" class="button-styling" id="LJbutton" value="Load JSON">
             </fieldset>
             
@@ -50,7 +50,7 @@
                 <input type="button" class="button-styling" id="PPbutton" value="Previous Photo">
                 <input type="button" class="button-styling" id="NPbutton" value="Next Photo">
                 <input type="button" class="button-styling" id="FPbutton" value="First Photo">
-                <input type="button" class="button-styling" id="LPbutton" value="Last Photo">
+                <input type="button" class="button-styling" id="LaPbutton" value="Last Photo">
             </fieldset>
 
             <fieldset>
