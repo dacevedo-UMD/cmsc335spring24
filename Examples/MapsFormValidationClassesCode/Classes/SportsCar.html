@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Class Example</title>
+</head>
+
+<body>
+    <script>
+        class Car {
+            static dealership = "Terp Cars"; /* static public */
+            static #instances = 0; /* static private */
+
+            passengers = ["Rose"]; /* public */
+            #tag; #mileage; /* private */
+
+            constructor(tag, mileage) {
+                this.#tag = tag;
+                this.#mileage = mileage;
+                Car.#instances++;
+            }
+
+            displayInfo() {
+                document.writeln(`Tag: ${this.#tag}, Mileage: ${this.#mileage}, Passengers: ${this.passengers}`);
+            }
+
+            [Symbol.toPrimitive]() {
+                /* Java's toString() */
+                return `Tag: ${this.#tag}, Mileage: ${this.#mileage}, Passengers: ${this.passengers}`;
+            }
+
+            get tag() {
+                return this.#tag;
+            }
+
+            set tag(newTag) {
+                this.#tag = newTag;
+            }
+         
+            static getInstances() {
+                return Car.#instances;
+            }
+        }
+
+        class SportsCar extends Car {
+            #engine;
+            constructor(tag, mileage, engine) {
+                super(tag, mileage);
+                this.#engine = engine;
+            }
+
+            displayInfo() {
+                super.displayInfo();
+                document.writeln(`Engine: ${this.#engine}<br>`);
+            }
+
+            [Symbol.toPrimitive]() {
+                return `${super[Symbol.toPrimitive]()}, Engine: ${this.#engine}`;
+            }
+
+            get engine() {
+                return this.#engine;
+            }
+        }
+        const tag = "ABC", mileage = 10000;
+        const carOne = new Car(tag, mileage);
+        document.writeln(`Mark #1: Car info:<br>`);
+        carOne.displayInfo();
+        document.writeln(`<br>Mark #2: ${carOne}`);
+        carOne.tag = "CBD"
+        document.writeln(`<br>Mark #3: New Tag: ${carOne.tag}<br>`);
+        
+        const carTwo = new SportsCar("X2W-Sports", 22000, "turbo");
+        document.writeln(`Mark #4: Sports car info:<br>`);
+        carTwo.displayInfo();
+        document.writeln(`Mark #5: Engine: ${carTwo.engine}<br>`);
+        document.writeln(`Mark #6: ${carTwo}<br>`);
+        document.writeln(`Mark #7: Total Cars: ${Car.getInstances()}`);
+    </script>
+</body>
+
+</html>

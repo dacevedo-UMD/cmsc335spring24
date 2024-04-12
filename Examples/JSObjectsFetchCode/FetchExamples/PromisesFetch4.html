@@ -13,7 +13,13 @@
         alert(`Retrieving data from ${url} (check console for results)`);
         
         fetch(url)
-            .then(response => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw "Problem downloading";
+                } else {
+                    return response.json();
+                }
+            })
             .then(json => processObject(json))
             .catch(error => console.log("Reporting error: " + error));
        
@@ -22,7 +28,7 @@
             console.log(json);
             console.log("Accessing properties\n")
             console.log(`user Id: ${json.userId}`);
-            throw "Faking an error took place";     // faking an error; will trigger catch above
+            // throw "Faking an error took place";     // faking an error; will trigger catch above
             console.log(`id: ${json.id}`);
             console.log(`title: ${json.title}`);            
         }
