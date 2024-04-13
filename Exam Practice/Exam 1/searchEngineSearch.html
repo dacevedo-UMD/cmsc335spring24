@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Word to Search: <input id="wordSearch" type="text"> 
+    Engine to Use: <input id="engineSearch" type="text" placeholder="google or yahoo">
+    <input id="search" type="button" onclick="searchFunction()" value="Search">
+    <hr>
+    
+    <div id="display"></div><input id="placeHeader" type="button" onclick="setHeader('Hello World!')">
+    <script>
+        window.onload = restOperator();
+
+        function searchFunction() {
+            let word = document.querySelector("#wordSearch").value;
+            let engine = document.querySelector("#engineSearch").value;
+            if (engine !== "google" && engine !== "yahoo") {
+                window.alert("Invalid engine");
+                return;
+            }
+            const searchURL = `https://www.${engine}.com/search?q=${word}`;
+            window.open(searchURL);
+        }
+
+        function setHeader(string) {
+            document.querySelector("#display").innerHTML = getMessageInColor(string, "red");
+        }
+
+        function getMessageInColor(message, color) {
+            return `<span style='color: ${color};'>${message}</span>`;
+        }
+        console.log(isValidPhone("4434-4313"));
+        function isValidPhone(phoneNumber) {
+            // Check if the phone number has the correct length
+            if (phoneNumber.length !== 8) {
+                return false;
+            }
+
+            // Check if the first three characters are digits and the fourth character is '-'
+            for (let i = 0; i < 3; i++) {
+                if (isNaN(Number(phoneNumber[i]))) {
+                    return false;
+                }
+            }
+
+            // Check if the fourth character is '-'
+            if (phoneNumber[3] !== '-') {
+                return false;
+            }
+
+            // Check if the remaining four characters are digits
+            for (let i = 4; i < 8; i++) {
+                if (isNaN(Number(phoneNumber[i]))) {
+                    return false;
+                }
+            }
+
+            // If all conditions are met, the phone number is valid
+            return true;
+        }
+
+        function displayName(name = "Daniel") {
+            console.log(`Hello, ${name}`);
+        }
+
+        function restOperator(...numbers) {
+            let arr1 = [1,2,3,4];
+            let arr2 = [...arr1, 5, 6,7];
+            document.write(arr2);
+        }
+
+        geHTMLTableForObject(object) {
+            let answer = "<table border='1'>";
+            answer += "<tr><th>Property</th><th>Value</th></tr>"
+            for (let key in object) {
+                
+            }
+        }
+       
+        
+    </script>
+</body>
+</html>
