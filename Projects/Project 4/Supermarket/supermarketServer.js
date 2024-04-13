@@ -30,11 +30,10 @@ process.stdin.on('readable', function () {
     if (dataInput !== null) {
         const command = dataInput.trim();
         if (command === "itemsList") {
-            const itemList = process.argv[2];
-            let fileContent = fs.readFileSync(itemList, 'utf-8');
+            const itemsList = process.argv[2];
+            let fileContent = fs.readFileSync(itemsList, 'utf-8');
             const json = JSON.parse(fileContent);
-            const itemsList = json.itemsList;
-            process.stdout.write(JSON.stringify(itemsList));
+            console.log(json.itemsList);
         } else if (command === "stop") {
             console.log('Shutting down the server...');
             process.exit(0);
