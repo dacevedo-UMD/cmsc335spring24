@@ -1,25 +1,39 @@
 const http = require('http');
-const express = require('express');
 const fs = require('fs');
 const path = require("path");
+const express = require('express');
+const app = express();
 
 const portNumber = 5000;
 const httpSuccessStatus = 200;
 
-// sample webserver...
-// const webServer = http.createServer((request, response) => {
-//     response.writeHead(httpSuccessStatus, {'Content-type': 'text/html'});
-//     response.write('<h1>Web Server (NoddeJS Based) Running</h1>');
-//     response.end();
-// });
+/* directory where templates will reside */
+app.set("views", path.resolve(__dirname, "templates"));
 
-// webServer.listen(portNumber);
-// console.log(`Web server started and running on http://localhost:${portNumber}`);
+/* view/templating engine */
+app.set("view engine", "ejs");
+
+app.get("/", (request, response) => { 
+    response.render("index");
+});
+app.get("/catalog", (request, response) => {
+    response.render("displayItems");
+});
+app.get("/order", (request, response) => { /* You implement */ });
+app.post("/order", (request, response) => { /* You implement */ });
+
+app.listen(portNumber, (err) => {
+    if (err) {
+      console.log("Starting server failed.");
+    } else {
+      console.log(`To access server: http://localhost:${portNumber}`);
+    }
+});
 
 process.stdin.setEncoding("utf8"); /* encoding */
 
 if (process.argv.length != 3) { /* checking valid call */
-    process.stdout.write(`Usage ${process.argv[1]} targetLanguage`);
+    process.stdout.write(`Usage supermarketServer.js jsonFile`);
     process.exit(1);
 }
 
