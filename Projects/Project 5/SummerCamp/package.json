@@ -1,0 +1,14 @@
+{
+  "name": "summercamp",
+  "version": "1.0.0",
+  "description": "This project was made to practice MongoDB and MongoDB access from Node.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Acevedo-Ruz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
