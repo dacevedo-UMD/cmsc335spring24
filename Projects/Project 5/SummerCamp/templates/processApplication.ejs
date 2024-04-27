@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Applicant's Data</h1>
+    <div>
+		<strong>Name: </strong><%- name %><br>
+		<strong>Email Address: </strong><%- email %><br>
+		<strong>GPA: </strong><%- gpa %><br>
+        <strong>Background Information: </strong><br><%- backInfo %><br>
+        <hr>
+		<strong>Task complete at <span id="time"></span></strong>
+        <hr>
+        <a href="/">HOME</a>
+        <script>
+            onload = function updateTime() {
+                document.querySelector("#time").innerHTML = new Date();
+            }
+        </script>
+	</div>
+</body>
+</html>
