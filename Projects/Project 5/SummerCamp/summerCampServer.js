@@ -27,8 +27,29 @@ app.post("/processApplication", (req, res) => {
     const variables = {name: req.body.name, 
                         email: req.body.email,
                         gpa: req.body.gpa,
-                        backInfo: req.body.backgroundInfo};
+                        backInfo: req.body.backgroundInfo,
+                        time: new Date()};
     res.render("processApplication", variables)
+});
+
+app.get("/reviewApplication", (req, res) => {
+    res.render("reviewApplication");
+});
+
+app.post("/processReviewApplication", (req, res) => { /* Finish this */
+    res.render("processReviewApplication");
+});
+
+app.get("/adminGFA", (req, res) => {
+    res.render("adminGFA")
+});
+
+app.post("/processAdminGFA", (req, res) => { /* Finish this */
+    res.render("processAdminGFA");
+});
+
+app.get("/adminRemove", (req, res) => {
+    res.render("adminRemove")
 });
 
 app.listen(portNumber);
