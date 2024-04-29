@@ -1,10 +1,25 @@
-;const express = require('express');
+const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, 'credentialsDontPost/.env') })  
+
+// MongoDB Setup
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGO_CONNECTION_STRING;
+const databaseAndCollection = {db: process.env.MONGO_DB_NAME, collection: process.env.MONGO_COLLECTION};
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
+
 
 const portNumber = process.argv[2];
 const httpSuccessStatus = 200;
+
 
 /* directory where templates will reside */
 app.set("views", path.resolve(__dirname, "templates"));
@@ -23,21 +38,33 @@ app.get("/apply", (req, res) => {
     res.render("application")
 });
 
-app.post("/processApplication", (req, res) => {
-    const variables = {name: req.body.name, 
+app.post("/processApplication", (req, res) => { // this function doesnt need async because there no data in it that
+    const variables = {name: req.body.name,     // replies on the return of insertOneApplication (an async function)
                         email: req.body.email,
                         gpa: req.body.gpa,
                         backInfo: req.body.backgroundInfo,
                         time: new Date()};
-    res.render("processApplication", variables)
+    insertOneApplication(variables);
+    console.log("data entered = " + variables);
+    res.render("processApplication", variables);
 });
 
 app.get("/reviewApplication", (req, res) => {
     res.render("reviewApplication");
 });
 
-app.post("/processReviewApplication", (req, res) => { /* Finish this */
-    res.render("processReviewApplication");
+app.post("/processReviewApplication", async (req, res) => { // this function DOES need async because it relies on
+    let result = await lookUpOneEntry(req.body.email);      // the data thats returned from lookUpOneEntry()
+    if (result) {
+        const variables = {name: result.name, 
+            email: result.email,
+            gpa: result.gpa,
+            backInfo: result.backInfo,
+            time: result.time};
+        res.render("processReviewApplication", variables);
+    } else {
+        res.status(404).send("<h1>Error: No email found</h1>Return <a href='/'>HOME</a>?");
+    }
 });
 
 app.get("/adminGFA", (req, res) => {
@@ -51,6 +78,30 @@ app.post("/processAdminGFA", (req, res) => { /* Finish this */
 app.get("/adminRemove", (req, res) => {
     res.render("adminRemove")
 });
+
+// list of functions to help with processing data into mongoDB
+async function insertOneApplication(application) {
+    try {
+        await client.connect();
+       
+        /* Inserting one application */
+        const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(application);
+        console.log(`Entry created with id ${result.insertedId}`);
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    }
+}
+
+async function lookUpOneEntry(emailName) {
+    await client.connect();
+    let filter = {email: emailName};
+    const result = await client.db(databaseAndCollection.db)
+                        .collection(databaseAndCollection.collection)
+                        .findOne(filter);
+    return result;
+}
 
 app.listen(portNumber);
 console.log(`Web server started and running at http://localhost:${portNumber}`);
