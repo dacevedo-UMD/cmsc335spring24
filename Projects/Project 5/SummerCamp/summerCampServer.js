@@ -45,7 +45,6 @@ app.post("/processApplication", (req, res) => { // this function doesnt need asy
                         backInfo: req.body.backgroundInfo,
                         time: new Date()};
     insertOneApplication(variables);
-    console.log("data entered = " + variables);
     res.render("processApplication", variables);
 });
 
@@ -71,22 +70,38 @@ app.get("/adminGFA", (req, res) => {
     res.render("adminGFA")
 });
 
-app.post("/processAdminGFA", (req, res) => { /* Finish this */
-    res.render("processAdminGFA");
+app.post("/processAdminGFA", async (req, res) => { 
+    let result = await lookUpMany(req.body.gpa);      
+    if (result) {
+        let t = "<table border='1'><tr><th>Name</th><th>GPA</th></tr>"
+        result.forEach(e => {
+            t += `<tr><td>${e.name}</td><td>${e.gpa}</td></tr>`
+        });
+        const variable = {gfaTable: t += "</table>"};
+        res.render("processAdminGFA", variable);
+    } else {
+        res.status(404).send("<h1>Error: No entries found, return </h1>Return <a href='/'>HOME</a>?");
+    }
 });
 
 app.get("/adminRemove", (req, res) => {
     res.render("adminRemove")
 });
 
+app.post("/processAdminRemove", async (req, res) => {
+    await client.connect();
+    const result = await client.db(databaseAndCollection.db)
+    .collection(databaseAndCollection.collection)
+    .deleteMany({});
+    res.render("processAdminRemove", {num: result.deletedCount})
+});
+
 // list of functions to help with processing data into mongoDB
 async function insertOneApplication(application) {
     try {
         await client.connect();
-       
         /* Inserting one application */
         const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(application);
-        console.log(`Entry created with id ${result.insertedId}`);
     } catch (e) {
         console.error(e);
     } finally {
@@ -100,6 +115,14 @@ async function lookUpOneEntry(emailName) {
     const result = await client.db(databaseAndCollection.db)
                         .collection(databaseAndCollection.collection)
                         .findOne(filter);
+    return result;
+}
+
+async function lookUpMany(gpa) {
+    await client.connect();
+    let filter = {gpa: { $gte: gpa}};
+    const cursor = client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).find(filter);
+    const result = await cursor.toArray();
     return result;
 }
 

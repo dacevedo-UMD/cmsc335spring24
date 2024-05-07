@@ -7,18 +7,15 @@
 </head>
 <body>
     <h1>Removing All Applicants</h1>
-    <form>
-        
+    <form action="/processAdminRemove" method="post">
+        <input type="submit" value="Remove all applicants">
     </form>
-    <input type="button" value="Remove all applicants" onclick="processRemoveAll()">
     <hr>
     <a href="/">HOME</a>
     <script>
-        function processRemoveAll() {
-            if ((window.confirm("Are you sure you want to remove all applications?"))) {
-
-            }
-        }
+        window.onsubmit = () => {
+            return window.confirm("Are you sure you want to remove all applications?")
+        };
     </script>
 </body>
 </html>
